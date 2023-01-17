@@ -4,3 +4,29 @@ Online Store->Theme->Edit code->Snippets->product.price.liquid
 <div class="you-save">
         {% if product.compare_at_price_max > product.price %}"You save {{ product.compare_at_price_max | minus: product.price | times: 100.0 |divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}% ({{ product.compare_at_price_max | minus: product.price|money}})"{% endif %}
 </div>
+=================================================================details==============================================================================================
+Step 1: Find Your Product Template
+In your Shopify Admin, go to Themes > Template Editor > product.liquid.  This is probably where your prices are stored.  Do a search for “price”.  Somewhere in the template, you should see a piece of code:
+
+{{ product. price }}
+
+This is where your theme shows the price of the product: in our example above, $15.00.
+
+Step 2: Insert This Code
+Boring note first: Make a backup!
+
+Next, insert the following piece of code wherever you want it to appear.  For example, if you want to show the % discount next to the price, place the code next to {{ product. price }}.
+
+This code calculates and displays the percentage off, rounded to the nearest whole number.
+E.g. – You save 25%
+
+{% if product.compare_at_price_max > product.price %}You save {{ product.compare_at_price_max | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}%{% endif %}
+What The H*ll Does That Code Do, Exactly?
+The code above says:
+
+If the product is on special right now ( {% if product.compare_at_price_max > product.price %} )
+Show the text “You save”, and then
+A long-winded piece of math, finding the discount ($5) as a percentage of the original price ($20), neatly formatted into a percentage without any decimal points.
+Variations
+If you want to say something other than “You save”, just change that text in the code snippet.  For example, if you want “Discount: 25%”, just change “you save” to say “Discount:” in the code above.
+
