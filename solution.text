@@ -1,0 +1,6 @@
+Add this code at the bottom of
+Online Store->Theme->Edit code->Snippets->product.price.liquid
+
+<div class="you-save">
+        {% if product.compare_at_price_max > product.price %}"You save {{ product.compare_at_price_max | minus: product.price | times: 100.0 |divided_by: product.compare_at_price_max | money_without_currency | times: 100 | remove: '.0'}}% ({{ product.compare_at_price_max | minus: product.price|money}})"{% endif %}
+</div>
