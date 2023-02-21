@@ -1,6 +1,9 @@
 Add this code at the bottom of
 Online Store->Theme->Edit code->Snippets->product-template-supermarket.liquid
 refrence for percentage taken from Online Store->Theme->Edit code->Snippets->product-label.liquid
+refrence for percentage taken from Online Store->Theme->Edit code->snippets->product-grid-item-style-4.liquid 
+snippets/collection-supermarket.liquid
+snippets/collection-template-supermarket.liquid
 ----------------------------------------------------------------------with ella theme ----------------------------------------------------------------------------
                   <div class="you-save">
         {% if product.compare_at_price_max > product.price %} You save {{ product.compare_at_price_min | minus: product.price_min | times: 100.0 | divided_by: product.compare_at_price_min | round}}% ({{ product.compare_at_price_max | minus: product.price|money}}) <br><br> {% endif %}
